@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const Post = ({ post }) => {
-//   console.log(post);
+  const navigate = useNavigate();
+  //   console.log(post);
   const { id, title, body } = post;
+  const handlePostDetails = () => {
+    navigate(`/posts/${id}`);
+  };
   return (
     <div className="border-2 p-4 border-orange-500 rounded-lg">
       <p>
@@ -10,7 +15,8 @@ const Post = ({ post }) => {
       </p>
       <h3>Title: {title}</h3>
       <p>{body}</p>
-      <Link to={`/posts/${id}`}>Post Details</Link>
+      {/* <Link to={`/posts/${id}`}>Post Details</Link> */}
+      <button onClick={handlePostDetails}>Post Details</button>
     </div>
   );
 };
