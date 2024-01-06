@@ -3,18 +3,37 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "./Components/Header/Header.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
+import Contact from "./Components/Contact/Contact.jsx";
+import About from "./Components/About/About.jsx";
+import Posts from "./Posts/Posts.jsx";
+import PostDetails from "./PostDetails/PostDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home!</div>,
-  },
-  {
-    path: "/contact",
-    element: <div>Contact!</div>,
-  },
-  {
-    path: "/about",
-    element: <div>about!</div>,
+    element: <Header></Header>,
+    children: [
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/posts",
+        element: <Posts></Posts>,
+        loader: () => fetch("https://jsonplaceholder.typicode.com/posts"),
+      },
+      {
+        path: "/posts/:postID",
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/posts/${params.postID}`),
+        element: <PostDetails></PostDetails>,
+      },
+    ],
   },
 ]);
 
