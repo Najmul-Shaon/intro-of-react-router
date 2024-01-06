@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 // import { Link } from "react-router-dom";
 const Post = ({ post }) => {
   const navigate = useNavigate();
+
   //   console.log(post);
   const { id, title, body } = post;
   const handlePostDetails = () => {

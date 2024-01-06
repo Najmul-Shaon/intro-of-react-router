@@ -7,10 +7,12 @@ import Contact from "./Components/Contact/Contact.jsx";
 import About from "./Components/About/About.jsx";
 import Posts from "./Posts/Posts.jsx";
 import PostDetails from "./PostDetails/PostDetails.jsx";
+import NotFoundData from "./Components/NotFoundData/NotFoundData.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Header></Header>,
+    errorElement: <NotFoundData></NotFoundData>,
     children: [
       {
         path: "/contact",
